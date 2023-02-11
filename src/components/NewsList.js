@@ -3,11 +3,10 @@ import NewsItem from "./NewsItem";
 import axios from "axios";
 import Search from "./Search";
 import SyncLoader from "react-spinners/SyncLoader";
-import Alert from "./alert";
 import ScrollButton from "./scrollButton";
 
-// --Copyright 2022  (NaveenBasyal)
 
+// --Copyright 2022  (NaveenBasyal)
 const NewsList = () => {
   const [articles, setArticles] = useState([]);
   const [term, setTerm] = useState("latest news");
@@ -16,7 +15,7 @@ const NewsList = () => {
   useEffect(() => {
     const getArticles = async () => {
       const response = await axios.get(
-        `https://newsapi.org/v2/everything?q=${term}&apiKey=82cce13b19014e1bace0e9930fee6c28`
+        `https://newsapi.org/v2/everything?q=${term}&apiKey=${process.env.REACT_APP_API_KEY}`
       );
       console.log(response);
       setArticles(response.data.articles);
@@ -66,8 +65,6 @@ const NewsList = () => {
             </div>
             </div>
           </header>
-          <Alert />
-
           <ScrollButton />
 
           <section className="container">
