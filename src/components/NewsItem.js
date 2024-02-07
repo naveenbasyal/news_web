@@ -1,4 +1,5 @@
 import React from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const NewsItem = ({
   title,
@@ -10,10 +11,20 @@ const NewsItem = ({
   publishedAt,
 }) => {
   return (
-    <div data-aos="zoom-in-up" className="card shadow p-3 mb-5 bg-white rounded border border-0 ">
-      <img
-        src={urlToImage}
-        className="my-2 img-fluid rounded"
+    <div
+      data-aos="zoom-in-up"
+      className="card shadow p-3 mb-5 bg-white rounded border border-0 "
+    >
+      <LazyLoadImage
+        src={
+          urlToImage
+            ? urlToImage
+            : "https://www.industry.gov.au/sites/default/files/August%202018/image/news-placeholder-738.png"
+        }
+        effect="blur"
+        width={"100%"}
+        height={"200px"}
+        className="my-2 img-fluid  rounded"
         alt={urlToImage}
       />
       <div className="card-body">
@@ -34,7 +45,9 @@ const NewsItem = ({
             <cite title="Source Title">{author}</cite>
           </figcaption>
         </li>
-        <li className="list-group-item">{publishedAt}</li>
+        <li className="list-group-item">
+          {new Date(publishedAt).toDateString("dd-MM-yyyy")}
+        </li>
       </ul>
     </div>
   );

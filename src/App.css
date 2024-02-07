@@ -44,7 +44,7 @@ section {
   top: 0;
 }
 .shadow {
-  box-shadow: 0 .5rem 1rem #f7d9cf!important;
+  box-shadow: 0 0 .5rem #f7d9cf!important;
 }
 .scroll {
   z-index: 11;
